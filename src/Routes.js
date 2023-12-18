@@ -1,20 +1,23 @@
+// Routes.js
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
+import CreateAgencyForm from './CreateAgencyForm';
+import AgencyListView from './AgencyListView';
 import ApiCall from './ApiCall';
-import Sidebar from './Sidebar';
-// import  Content  from  './Content';
-
 
 const AppRoutes = () => {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/zones" element={<ApiCall />} />
-        {/* <Route path="/Content" element={<Content />} /> */}
-        {/* Ajoutez d'autres routes ici si nécessaire */}
-      </Routes>
+      <App>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/create-agency" element={<CreateAgencyForm />} />
+          <Route path="/agency-list" element={<AgencyListView />} />
+          <Route path="/zones" element={<ApiCall />} />
+          {/* Define other routes as needed */}
+        </Routes>
+      </App>
     </Router>
   );
 };

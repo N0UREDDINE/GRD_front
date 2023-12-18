@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Layout, Menu } from 'antd';
 import {
   DesktopOutlined,
   FileOutlined,
@@ -6,64 +8,76 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
 
+const { Sider } = Layout;
 
-const { Header, Content, Footer, Sider } = Layout;
-
-function getItem(label, key, icon, children) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-  };
-}
-
-const items = [
-
-  getItem(''),
-  getItem(''),
-  getItem('Créer une Agence ', '1', <PieChartOutlined />),
-  getItem('Recherche', '2', <DesktopOutlined />),
-  getItem('Option 1', 'sub1', <UserOutlined />, [
-    getItem('option A', '3'),
-    getItem('option B', '4'),
-    getItem('option C', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Dossier', '9', <FileOutlined />),
-];
-
-const App = () => {
+const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(false);
-  const [sidebarColor, setSidebarColor] = useState('');
 
-  useEffect(() => {
-    // Retrieve the background color of the sidebar dynamically
-    const sidebarColor = getComputedStyle(document.querySelector('.ant-layout-sider')).backgroundColor;
-    setSidebarColor(sidebarColor);
-  }, []);
+  const items = [
+    {
+      key: '0',
+      label: <Link to="#"></Link>,
+    },
+    {
+      key: '0',
+      label: <Link to="#"></Link>,
+    },
+    {
+      key: '1',
+      icon: <PieChartOutlined />,
+      label: <Link to="/create-agency">Créer une Agence</Link>,
+    },
+    {
+      key: '2',
+      icon: <DesktopOutlined />,
+      label: <Link to="/agency-list">Liste des Agences</Link>,
+    },
+    {
+      key: '3',
+      icon: <UserOutlined />,
+      label: 'Option 1',
+      children: [
+        {
+          key: 'sub1',
+          label: <Link to="/option1">Option A</Link>,
+        },
+        {
+          key: 'sub2',
+          label: <Link to="/option2">Option B</Link>,
+        },
+        
+      ],
+    },
+    {
+      key: '4',
+      icon: <TeamOutlined />,
+      label: 'Team',
+      children: [
+        {
+          key: 'sub3',
+          label: <Link to="/team1">Team 1</Link>,
+        },
+        {
+          key: 'sub4',
+          label: <Link to="/team2">Team 2</Link>,
+        },
+        
+      ],
+    },
+    {
+      key: '5',
+      icon: <FileOutlined />,
+      label: <Link to="/files">Dossier</Link>,
+    },
+  ];
 
   return (
-    <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-      </Sider>
-      <Layout>
-        <Header style={{ padding: 0, background: sidebarColor }}>
-          {/* Add any header content here */}
-        </Header>
-        <Content />
-          
-        
-           
- 
-        <Footer style={{ textAlign: 'center' }}>GRD</Footer>
-      </Layout>
-    </Layout>
+    <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+      <div className="logo" />
+      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
+    </Sider>
   );
 };
 
-export default App;
+export default Sidebar;

@@ -1,0 +1,33 @@
+/* CreateAgencyForm.css */
+.ant-form-item-label > label {
+    font-weight: bold;
+  }
+  
+  .ant-upload {
+    border: 1px dashed #000000;
+    border-radius: 4px;
+    padding: 16px;
+  }
+  
+  .ant-upload-drag-icon {
+    color: #40a9ff;
+    font-size: 32px;
+    margin-bottom: 8px;
+  }
+  
+  .ant-radio-group .ant-radio-button-wrapper {
+    display: flex;
+    align-items: center;
+    margin-right: 8px; /* Space between radio buttons */
+  }
+  
+  .ant-radio-button-wrapper span {
+    margin-left: 8px;
+  }
+  
+  .ant-col-12 {
+    margin-top: 16px; /* Spacing between the columns */
+  }
+  
+  /* Add more styles as needed to match your design */
+  
